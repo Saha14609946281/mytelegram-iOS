@@ -527,22 +527,22 @@ func initializedNetwork(accountId: AccountRecordId, arguments: NetworkInitializa
             }
             
             let seedAddressList: [Int: [String]]
-            
-            if testingEnvironment {
-                seedAddressList = [
-                    1: ["192.168.1.100"],
-                    2: ["192.168.1.100"],
-                    3: ["192.168.1.100"]
-                ]
-            } else {
-                seedAddressList = [
-                    1: ["192.168.1.100"],
-                    2: ["192.168.1.100"],
-                    3: ["192.168.1.100"],
-                    4: ["192.168.1.100"],
-                    5: ["192.168.1.100"]
-                ]
-            }
+
+if testingEnvironment {
+    seedAddressList = [
+        1: ["144.24.72.124:20443"],
+        2: ["144.24.72.124:20443"],
+        3: ["144.24.72.124:20443"]
+    ]
+} else {
+    seedAddressList = [
+        1: ["144.24.72.124:20443"],
+        2: ["144.24.72.124:20443"],
+        3: ["144.24.72.124:20443"],
+        4: ["144.24.72.124:20443"],
+        5: ["144.24.72.124:20443"]
+    ]
+}
             
             for (id, ips) in seedAddressList {
                 context.setSeedAddressSetForDatacenterWithId(id, seedAddressSet: MTDatacenterAddressSet(addressList: ips.map { MTDatacenterAddress(ip: $0, port: 20443, preferForMedia: false, restrictToTcp: false, cdn: false, preferForProxy: false, secret: nil) }))
